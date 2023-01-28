@@ -61,12 +61,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!--      https://mvnrepository.com/artifact/org.eluder.coveralls/coveralls-maven-plugin
         <dependency>
             <groupId>org.eluder.coveralls</groupId>
             <artifactId>coveralls-maven-plugin</artifactId>
             <version>4.3.0</version>
-        </dependency> -->
+        </dependency> 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
