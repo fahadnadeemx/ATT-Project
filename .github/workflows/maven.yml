@@ -60,4 +60,4 @@ jobs:
           -DpullRequest=${{ github.event.pull_request.number }} -X
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+          COVERALLS_REPO_TOKEN: a3geusaxwVYYwdIGySF8Jkhy4BQE2FBu3
