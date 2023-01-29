@@ -12,7 +12,7 @@ Sonar Cloud Coverage and Ratings:
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_ATT-Project&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_ATT-Project&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_ATT-Project&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_ATT-Project&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_BookManagement&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_BookManagement)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_ATT-Project&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
