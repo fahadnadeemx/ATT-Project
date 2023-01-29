@@ -214,7 +214,7 @@
                     <mutators>
                         <mutator>DEFAULTS</mutator>
                     </mutators>
-                    <mutationThreshold>0</mutationThreshold>
+                    <mutationThreshold>80</mutationThreshold>
                     <outputFormats>
                         <outputFormat>XML</outputFormat>
                         <outputFormat>HTML</outputFormat>
