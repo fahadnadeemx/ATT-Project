@@ -28,4 +28,9 @@ public class BeanMapper {
         return modelMapper.typeMap(BookDto.class, BookEntity.class)
             .map(book);
     }
+
+	public ModelMapper getModelMapper() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
