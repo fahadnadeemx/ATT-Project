@@ -14,4 +14,5 @@ Sonar Cloud Coverage and Ratings:
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_ATT-Project&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fahadnadeemx_BookManagement&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_BookManagement)
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=fahadnadeemx_ATT-Project)](https://sonarcloud.io/summary/new_code?id=fahadnadeemx_ATT-Project)
+[![Coverage Status](https://coveralls.io/repos/github/fahadnadeemx/ATT-Project/badge.svg?branch=main)](https://coveralls.io/github/fahadnadeemx/ATT-Project?branch=main)
