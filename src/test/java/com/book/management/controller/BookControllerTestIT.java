@@ -43,6 +43,7 @@ public class BookControllerTestIT {
     private BookDto dto;
     private ObjectMapper mapper;
 
+    
     @Before
     public void before() {
         entity = new BookEntity(null,"nameEntity","authorEntity",2);
