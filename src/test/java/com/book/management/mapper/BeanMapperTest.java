@@ -6,7 +6,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.modelmapper.ModelMapper;
 
 import com.book.management.entity.BookEntity;
 import com.book.management.model.BookDto;
@@ -25,7 +24,6 @@ public class BeanMapperTest {
 	public void testPostConstruct() {
 		BeanMapper beanMapper = new BeanMapper();
 		beanMapper.postConstruct();
-		ModelMapper modelMapper = mapper.getModelMapper();
 
 	}
 
