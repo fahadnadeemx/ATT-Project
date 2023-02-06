@@ -29,4 +29,9 @@ public class BeanMapper {
             .map(book);
     }
 
+	public ModelMapper getModelMapper() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
