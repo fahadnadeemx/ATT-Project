@@ -25,7 +25,7 @@ public class BeanMapperTest {
 	public void testPostConstruct() {
 		BeanMapper beanMapper = new BeanMapper();
 		beanMapper.postConstruct();
-		ModelMapper modelMapper = mapper.getModelMapper();
+	;
 
 	}
 
@@ -56,5 +56,10 @@ public class BeanMapperTest {
 		assertEquals(bookDto.getName(), bookEntity.getName());
 		assertEquals(bookDto.getAuthor(), bookEntity.getAuthor());
 	}
-
+	@Test
+	public void testMapreturn() {
+		// Prepare test data
+		ModelMapper modelMapper = mapper.getModelMapper();;
+		assertEquals(modelMapper, null);
+	}
 }
