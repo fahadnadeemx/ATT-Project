@@ -26,5 +26,6 @@ public class BookEntity {
 
     @Column(name = "PRICE")
     private Integer price;
+    
 }
 
