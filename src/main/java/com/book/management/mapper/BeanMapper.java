@@ -29,10 +29,10 @@ public class BeanMapper {
             .map(book);
     }
 
-	public IllegalArgumentException getModelMapper() {
-		IllegalArgumentException ex = new IllegalArgumentException("Test exception");
-		return ex;
-	}
+//	public IllegalArgumentException getModelMapper() {
+//		IllegalArgumentException ex = new IllegalArgumentException("Test exception");
+//		return ex;
+//	}
 
 	
 }
