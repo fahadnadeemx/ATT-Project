@@ -29,9 +29,9 @@ public class BeanMapper {
             .map(book);
     }
 
-	public ModelMapper getModelMapper() {
-		// TODO Auto-generated method stub
-		return null;
+	public IllegalArgumentException getModelMapper() {
+		IllegalArgumentException ex = new IllegalArgumentException("Test exception");
+		return ex;
 	}
 
 	

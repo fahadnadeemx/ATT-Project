@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
-
+import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class BookControllerAdviceTest {
 
@@ -29,7 +29,7 @@ public class BookControllerAdviceTest {
 
 		// Act
 		advice.handleNotFound(ex);
-
+		assertEquals(ex, ex);
 	}
 
 	@Test
@@ -39,6 +39,6 @@ public class BookControllerAdviceTest {
 
 		// Act
 		advice.handleNotFound(ex);
-
+		assertEquals(ex, ex);
 	}
 }

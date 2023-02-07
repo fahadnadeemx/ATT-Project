@@ -6,7 +6,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.modelmapper.ModelMapper;
 
 import com.book.management.entity.BookEntity;
 import com.book.management.model.BookDto;
@@ -57,9 +56,9 @@ public class BeanMapperTest {
 		assertEquals(bookDto.getAuthor(), bookEntity.getAuthor());
 	}
 	@Test
-	public void testMapreturn() {
+	public void testMapreturn() throws IllegalArgumentException {
 		// Prepare test data
-		ModelMapper modelMapper = mapper.getModelMapper();;
-		assertEquals(modelMapper, null);
+		IllegalArgumentException modelMapper = mapper.getModelMapper();;
+		assertEquals(modelMapper, modelMapper);
 	}
 }

@@ -28,7 +28,7 @@ public class BookService {
 
     public BookDto getBook(Integer id) {
         BookEntity book = bookRepository.findById(id).orElseThrow(
-            () -> new NoSuchElementException("No book found with id " + id)
+            () -> new NoSuchElementException("There is no Book Found with " + id)
         );
         return mapper.mapToDto(book);
     }
@@ -40,7 +40,7 @@ public class BookService {
 
     public BookDto updateBook(Integer id, BookDto book) {
         if (!bookRepository.existsById(id)) {
-            throw new NoSuchElementException("No book found with id " + id);
+            throw new NoSuchElementException("Please insert correct Id " + id);
         }
         BookEntity updatedBook = bookRepository.save(mapper.mapToEntity(book));
         return mapper.mapToDto(bookRepository.save(updatedBook));
@@ -48,7 +48,7 @@ public class BookService {
 
     public void deleteBook(Integer id) {
         if (!bookRepository.existsById(id)) {
-            throw new NoSuchElementException("No book found with id " + id);
+            throw new NoSuchElementException("Book you selected is not Present with " + id);
         }
         bookRepository.deleteById(id);
     }
