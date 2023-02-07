@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.book.management.entity.BookEntity;
@@ -128,9 +129,12 @@ public class BookServiceTest {
 		Integer id = 1;
 		when(repository.existsById(id)).thenReturn(true);
 		doNothing().when(repository).deleteById(id);
-
 		// Act
 		service.deleteBook(id);
+
+		// Assert
+		Mockito.verify(repository).deleteById(id);
+		Mockito.verify(repository).existsById(id);
 	}
 
 	@Test(expected = NoSuchElementException.class)
@@ -141,5 +145,9 @@ public class BookServiceTest {
 
 		// Act
 		service.deleteBook(id);
+
+		// Act and Assert
+		NoSuchElementException exception = assertThrows(NoSuchElementException.class, () -> service.deleteBook(id));
+		assertEquals("Book you selected is not Present with " + id, exception.getMessage());
 	}
 }
