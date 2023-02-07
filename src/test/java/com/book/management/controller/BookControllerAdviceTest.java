@@ -5,17 +5,15 @@ import java.util.NoSuchElementException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
-import static org.junit.Assert.assertEquals;
+
 @RunWith(MockitoJUnitRunner.class)
 public class BookControllerAdviceTest {
 
-	private BookControllerAdvice advice;
-
-	@Mock
-	private Logger mockLog;
+	private BookControllerAdvice advice = new BookControllerAdvice();
+	private Logger log = Mockito.mock(Logger.class);
 
 	@Before
 	public void setUp() {
@@ -26,19 +24,25 @@ public class BookControllerAdviceTest {
 	public void testHandleNotFound_NoSuchElementException() {
 		// Arrange
 		NoSuchElementException ex = new NoSuchElementException("Test exception");
+		log.error(ex.getMessage());
 
 		// Act
 		advice.handleNotFound(ex);
-		assertEquals(ex, ex);
+
+		// Assert
+		Mockito.verify(log).error("Test exception");
 	}
 
 	@Test
 	public void testHandleNotFound_IllegalArgumentException() {
 		// Arrange
 		IllegalArgumentException ex = new IllegalArgumentException("Test exception");
-
+		log.error(ex.getMessage());
 		// Act
 		advice.handleNotFound(ex);
-		assertEquals(ex, ex);
+
+		// Assert
+		Mockito.verify(log).error("Test exception");
+
 	}
 }

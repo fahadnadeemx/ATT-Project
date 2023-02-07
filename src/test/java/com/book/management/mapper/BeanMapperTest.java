@@ -55,10 +55,5 @@ public class BeanMapperTest {
 		assertEquals(bookDto.getName(), bookEntity.getName());
 		assertEquals(bookDto.getAuthor(), bookEntity.getAuthor());
 	}
-//	@Test
-//	public void testMapreturn() throws IllegalArgumentException {
-//		// Prepare test data
-//		IllegalArgumentException modelMapper = mapper.getModelMapper();
-//		assertEquals(modelMapper, modelMapper);
-//	}
+
 }
