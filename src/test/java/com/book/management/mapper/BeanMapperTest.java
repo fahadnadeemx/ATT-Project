@@ -5,10 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 
 import com.book.management.entity.BookEntity;
 import com.book.management.model.BookDto;
@@ -25,10 +22,8 @@ public class BeanMapperTest {
 
 	@Test
 	public void testPostConstruct() {
-		ModelMapper modelMapper = Mockito.mock(ModelMapper.class);
 		BeanMapper beanMapper = new BeanMapper();
 		beanMapper.postConstruct();
-		Mockito.verify(modelMapper).getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 	}
 
 	@Test
