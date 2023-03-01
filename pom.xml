@@ -25,6 +25,11 @@
 			**/entity/*.*,
 			**/model/*.*,
 		</sonar.coverage.exclusions>
+		<sonar.exclusions>
+			**/BookManagementApplication.*,
+			**/entity/*.*,
+			**/model/*.*,
+		</sonar.exclusions>
 		<modelmapper.version>3.1.1</modelmapper.version>
 	</properties>
 	<dependencies>

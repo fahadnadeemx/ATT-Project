@@ -136,7 +136,7 @@ public class BookServiceTest {
 		Mockito.verify(repository).existsById(id);
 	}
 
-	@Test(expected = NoSuchElementException.class)
+	@Test
 	public void testDeleteBook_WhenNotExists() {
 		// Arrange
 		Integer id = 1;

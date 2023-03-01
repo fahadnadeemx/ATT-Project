@@ -1,13 +1,13 @@
 package com.book.management.mapper;
 
-import org.springframework.stereotype.Component;
-
 import com.book.management.entity.BookEntity;
 import com.book.management.model.BookDto;
 
-@Component
 public class BeanMapper {
 
+	private BeanMapper() {
+		
+	}
 	public static BookDto mapToDto(BookEntity bookEntity) {
 		BookDto bookDto = new BookDto();
 		bookDto.setId(bookEntity.getId());
