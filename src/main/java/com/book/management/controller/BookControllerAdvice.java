@@ -26,9 +26,9 @@ public class BookControllerAdvice {
 		logger.info("Not Found");
 	}
 
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	@ExceptionHandler(IllegalArgumentException.class)
-	public void handleNotFound(IllegalArgumentException e) {
-	logger.info("Bad Request");
-	}
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public void handleBadRequest(IllegalArgumentException e) {
+        logger.info("Bad Request");
+    }
 }
