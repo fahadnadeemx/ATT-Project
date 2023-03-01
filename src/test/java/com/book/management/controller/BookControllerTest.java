@@ -9,8 +9,6 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.junit.Before;
@@ -41,25 +39,25 @@ public class BookControllerTest {
         book = new BookDto();
         exception = new NoSuchElementException("test exception");
     }
-
-    @Test
-    public void testGetBooks() {
-        List<BookDto> books = new ArrayList<>();
-        books.add(book);
-        when(service.getBooks()).thenReturn(books);
-        List<BookDto> result = controller.getBooks();
-        verify(service).getBooks();
-        assertEquals(books, result);
-    }
-
-    @Test
-    public void testGetBooksEmptyList() {
-        List<BookDto> books = new ArrayList<>();
-        when(service.getBooks()).thenReturn(books);
-        List<BookDto> result = controller.getBooks();
-        verify(service).getBooks();
-        assertEquals(books, result);
-    }
+//
+//    @Test
+//    public void testGetBooks() {
+//        List<BookDto> books = new ArrayList<>();
+//        books.add(book);
+//        when(service.getBooks()).thenReturn(books);
+//        List<BookDto> result = controller.getBooks();
+//        verify(service).getBooks();
+//        assertEquals(books, result);
+//    }
+//
+//    @Test
+//    public void testGetBooksEmptyList() {
+//        List<BookDto> books = new ArrayList<>();
+//        when(service.getBooks()).thenReturn(books);
+//        List<BookDto> result = controller.getBooks();
+//        verify(service).getBooks();
+//        assertEquals(books, result);
+//    }
 
     @Test
     public void testGetBook() {

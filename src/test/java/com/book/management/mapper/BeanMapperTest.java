@@ -1,8 +1,6 @@
 package com.book.management.mapper;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.BeforeClass;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -12,46 +10,37 @@ import com.book.management.model.BookDto;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BeanMapperTest {
-	private static BeanMapper mapper;
-
-	@BeforeClass
-	public static void beforeClass() {
-		mapper = new BeanMapper();
-		mapper.postConstruct();
-	}
 
 	@Test
-	public void testPostConstruct() {
-		BeanMapper beanMapper = new BeanMapper();
-		beanMapper.postConstruct();
-	}
-
-	@Test
-	public void testMapToDto() {
+	public void testConvertEntityToDto() {
 		BookEntity bookEntity = new BookEntity();
 		bookEntity.setId(1);
-		bookEntity.setName("Test Title");
-		bookEntity.setAuthor("Test Author");
+		bookEntity.setName("Book name");
+		bookEntity.setAuthor("Author name");
+		bookEntity.setPrice(10);
 
-		BookDto bookDto = mapper.mapToDto(bookEntity);
+		BookDto bookDto = BeanMapper.mapToDto(bookEntity);
 
-		assertEquals(bookEntity.getId(), bookDto.getId());
-		assertEquals(bookEntity.getName(), bookDto.getName());
-		assertEquals(bookEntity.getAuthor(), bookDto.getAuthor());
+		Assert.assertEquals(bookEntity.getId(), bookDto.getId());
+		Assert.assertEquals(bookEntity.getName(), bookDto.getName());
+		Assert.assertEquals(bookEntity.getAuthor(), bookDto.getAuthor());
+		Assert.assertEquals(bookEntity.getPrice(), bookDto.getPrice());
 	}
 
 	@Test
-	public void testMapToDdd() {
-		// Prepare test data
+	public void testConvertDtoToEntity() {
 		BookDto bookDto = new BookDto();
-		bookDto.setName("Test Title");
-		bookDto.setAuthor("Test Author");
+		bookDto.setId(1);
+		bookDto.setName("Book name");
+		bookDto.setAuthor("Author name");
+		bookDto.setPrice(10);
 
-		BookEntity bookEntity = mapper.mapToEntity(bookDto);
+		BookEntity bookEntity = BeanMapper.mapToEntity(bookDto);
 
-		assertEquals(bookDto.getId(), bookEntity.getId());
-		assertEquals(bookDto.getName(), bookEntity.getName());
-		assertEquals(bookDto.getAuthor(), bookEntity.getAuthor());
+		Assert.assertEquals(bookDto.getId(), bookEntity.getId());
+		Assert.assertEquals(bookDto.getName(), bookEntity.getName());
+		Assert.assertEquals(bookDto.getAuthor(), bookEntity.getAuthor());
+		Assert.assertEquals(bookDto.getPrice(), bookEntity.getPrice());
 	}
 
 }

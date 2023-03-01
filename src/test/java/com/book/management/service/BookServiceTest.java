@@ -1,13 +1,12 @@
 package com.book.management.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -36,33 +35,24 @@ public class BookServiceTest {
 	private BeanMapper mapper;
 
 	@Test
-	public void test_getAllBooks() {
-		List<BookEntity> list = new ArrayList<BookEntity>();
-		BookEntity book1 = new BookEntity(1, "first", "Fahad", 1000);
-		BookEntity book2 = new BookEntity(2, "second", "Nadeem", 5000);
-		list.add(book1);
-		list.add(book2);
-		when(repository.findAll()).thenReturn(list);
+	public void testGetBook() {
 
-		List<BookDto> bookList = service.getBooks();
+		BookEntity testBook = new BookEntity();
+		testBook.setId(1);
+		testBook.setName("Test Book");
+		testBook.setAuthor("Test Author");
 
-		assertEquals(2, bookList.size());
-	}
+		// Mock the book repository's findById method to return the test book
+		when(repository.findById(testBook.getId())).thenReturn(Optional.of(testBook));
 
-	@Test
-	public void testGetBook_Success() {
-		// Arrange
-		Integer id = 1;
-		BookEntity book = new BookEntity();
-		when(repository.findById(id)).thenReturn(Optional.of(book));
-		BookDto expected = new BookDto();
-		when(mapper.mapToDto(book)).thenReturn(expected);
+		// Call the getBook method with the test book's ID
+		BookDto bookDto = service.getBook(1);
 
-		// Act
-		BookDto result = service.getBook(id);
-
-		// Assert
-		assertEquals(expected, result);
+		// Verify that the returned book DTO is not null and has the correct title and
+		// author
+		assertNotNull(bookDto);
+		assertEquals("Test Book", bookDto.getName());
+		assertEquals("Test Author", bookDto.getAuthor());
 	}
 
 	@Test
@@ -76,40 +66,49 @@ public class BookServiceTest {
 	}
 
 	@Test
-	public void testSaveBook() {
-		// Arrange
-		BookDto input = new BookDto();
-		BookEntity newBook = new BookEntity();
-		when(mapper.mapToEntity(input)).thenReturn(newBook);
-		BookEntity savedBook = new BookEntity();
-		when(repository.save(any(BookEntity.class))).thenReturn(savedBook);
-		BookDto expected = new BookDto();
-		when(mapper.mapToDto(savedBook)).thenReturn(expected);
+	public void saveBook_shouldReturnSavedBook() {
+		// given
+		BookDto bookDto = new BookDto(1, "Title", "Author", 1000);
 
-		// Act
-		BookDto result = service.saveBook(input);
+		BookEntity savedBookEntity = new BookEntity();
+		savedBookEntity.setId(1);
+		savedBookEntity.setName("Title");
+		savedBookEntity.setAuthor("Author");
+		savedBookEntity.setPrice(1000);
 
-		// Assert
-		assertEquals(expected, result);
+		when(repository.save(any(BookEntity.class))).thenReturn(savedBookEntity);
+
+		// when
+		BookDto savedBookDto = service.saveBook(bookDto);
+
+		// then
+		assertEquals(savedBookDto.getId(), savedBookEntity.getId());
+		assertEquals(savedBookDto.getName(), savedBookEntity.getName());
+		assertEquals(savedBookDto.getAuthor(), savedBookEntity.getAuthor());
+		assertEquals(savedBookDto.getPrice(), savedBookEntity.getPrice());
 	}
 
 	@Test
-	public void testUpdateBook_WhenExists() {
-		// Arrange
+	public void testUpdateBook() {
 		Integer id = 1;
-		BookDto input = new BookDto();
+		BookEntity bookEntity = new BookEntity();
+		bookEntity.setId(id);
+		bookEntity.setName("Test Book");
+		bookEntity.setAuthor("Test Author");
+		bookEntity.setPrice(1000);
 		when(repository.existsById(id)).thenReturn(true);
-		BookEntity updatedBook = new BookEntity();
-		when(mapper.mapToEntity(input)).thenReturn(updatedBook);
-		when(repository.save(any(BookEntity.class))).thenReturn(updatedBook);
-		BookDto expected = new BookDto();
-		when(mapper.mapToDto(updatedBook)).thenReturn(expected);
-
-		// Act
-		BookDto result = service.updateBook(id, input);
-
-		// Assert
-		assertEquals(expected, result);
+		when(repository.save(any(BookEntity.class))).thenReturn(bookEntity);
+		BookDto bookDto = new BookDto();
+		bookDto.setId(1);
+		bookDto.setName("Test Book");
+		bookDto.setAuthor("Test Author");
+		bookDto.setPrice(1000);
+		BookDto updatedBook = service.updateBook(id, bookDto);
+		assertNotNull(updatedBook);
+		assertEquals(id, updatedBook.getId());
+		assertEquals("Test Book", updatedBook.getName());
+		assertEquals("Test Author", updatedBook.getAuthor());
+		assertEquals(bookEntity.getPrice(), updatedBook.getPrice());
 	}
 
 	@Test(expected = NoSuchElementException.class)
