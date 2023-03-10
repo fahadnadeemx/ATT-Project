@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 EXPOSE 8080
-ADD target/book-management.jar book-management.jar
-ENTRYPOINT ["java", "-jar", "/book-management.jar"]
+ADD target/book-management.jar att-project.jar
+ENTRYPOINT ["java", "-jar", "/att-project.jar"]
