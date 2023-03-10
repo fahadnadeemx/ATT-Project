@@ -20,12 +20,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import com.book.management.entity.BookEntity;
 import com.book.management.model.BookDto;
 import com.book.management.repository.BookRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Testcontainers
 @SpringBootTest
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
@@ -42,6 +46,10 @@ public class BookControllerTestIT {
 	private BookEntity entity;
 	private BookDto dto;
 	private ObjectMapper mapper;
+
+	@Container
+	private final MySQLContainer mysqlContainer = new MySQLContainer().withDatabaseName("bookman")
+			.withUsername("bookman").withPassword("bookman");	
 
 	@Before
 	public void before() {

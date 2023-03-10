@@ -1,0 +1,11 @@
+FROM maven:3.8.1-jdk-11 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src/target/book-management.jar book-management.jar
+RUN mvn clean package -DskipTests
+
+FROM maven:3.8.1-jdk-11
+WORKDIR /app
+COPY --from=build /app/target/book-management.jar .
+COPY src/test/resources/application.properties .
+CMD ["mvn", "integration-test"]
